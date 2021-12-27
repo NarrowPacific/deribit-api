@@ -115,6 +115,14 @@ func (c *Client) subscriptionsProcess(event *Event) {
 			return
 		}
 		c.Emit(event.Channel, &notification)
+	} else if strings.HasPrefix(event.Channel, "incremental_ticker") {
+		var orderBookResponse models.GetOrderBookResponse
+		err := jsoniter.Unmarshal(event.Data, &orderBookResponse)
+		if err != nil {
+			log.Printf("%v", err)
+			return
+		}
+		c.Emit(event.Channel, &orderBookResponse)
 	} else if strings.HasPrefix(event.Channel, "user.changes") {
 		var notification models.UserChangesNotification
 		err := jsoniter.Unmarshal(event.Data, &notification)

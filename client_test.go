@@ -187,6 +187,8 @@ func TestClient_Subscribe(t *testing.T) {
 	client.On("trades.BTC-PERPETUAL.raw", func(e *models.TradesNotification) {
 
 	})
+	client.On("incremental_ticker.BTC-PERPETUAL", func(e *models.GetOrderBookResponse) {
+	})
 
 	client.On("user.changes.BTC-PERPETUAL.raw", func(e *models.UserChangesNotification) {
 
@@ -223,6 +225,7 @@ func TestClient_Subscribe(t *testing.T) {
 		//"quote.BTC-PERPETUAL",
 		//"ticker.BTC-PERPETUAL.raw",
 		//"trades.BTC-PERPETUAL.raw",
+		//"incremental_ticker.BTC-PERPETUAL",
 		//"user.changes.BTC-PERPETUAL.raw",
 		//"user.changes.future.BTC.raw",
 		//"user.orders.BTC-PERPETUAL.raw",
