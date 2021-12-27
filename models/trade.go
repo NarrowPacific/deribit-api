@@ -9,6 +9,7 @@ type Trade struct {
 	Iv             float64 `json:"iv"`
 	InstrumentName string  `json:"instrument_name"`
 	IndexPrice     float64 `json:"index_price"`
+	MarkPrice      float64 `json:"mark_price"`
 	Direction      string  `json:"direction"`
 	Amount         float64 `json:"amount"`
 }
